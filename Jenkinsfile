@@ -7,5 +7,11 @@ pipeline {
                 gitCheckout(repo: 'https://github.com/XEESHANAKRAM/Project-9-java-hands-on.git', branch: 'main')
             }
         }
+        stage('Build & Test')
+        {
+            steps{
+                mvnTest()
+            }
+        }
     }
 }
