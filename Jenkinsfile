@@ -1,10 +1,14 @@
+@Library('my-shared-library') _
 pipeline {
     agent any
 
     stages {
-        stage('github') {
+        stage('git') {
             steps {
-                git branch: 'main', url: 'https://github.com/XEESHANAKRAM/Project-9-java-hands-on.git'
+                gitCheckout{
+                    git branch: 'main', url: 'https://github.com/XEESHANAKRAM/Project-9-java-hands-on.git'
+                }
+                
             }
         }
     }
