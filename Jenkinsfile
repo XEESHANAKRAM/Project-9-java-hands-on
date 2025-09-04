@@ -10,14 +10,14 @@ pipeline {
                 cleanWs()
             }
         }
-        stage('Checkout from shared lib') {
+        stage('Checkout from GitHub') {
             steps {
-                gitCheckout(repo: 'https://github.com/XEESHANAKRAM/Project-9-java-hands-on.git', branch: 'main')
+                git branch: 'main', url: 'https://github.com/XEESHANAKRAM/Project-9-java-hands-on.git'
             }
         }
         stage('Build & Test') {
             steps {
-                mvnTest()
+                sh 'mvn clean test'
             }
         }
     }
