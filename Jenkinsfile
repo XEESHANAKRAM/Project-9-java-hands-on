@@ -1,14 +1,11 @@
 @Library('my-shared-library') _
+
 pipeline {
     agent any
-
     stages {
-        stage('git') {
+        stage('Checkout from shared lib') {
             steps {
-                gitCheckout{
-                    git branch: 'main', url: 'https://github.com/XEESHANAKRAM/Project-9-java-hands-on.git'
-                }
-                
+                gitCheckout(repo: 'https://github.com/XEESHANAKRAM/Project-9-java-hands-on.git', branch: 'main')
             }
         }
     }
