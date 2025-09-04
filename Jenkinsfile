@@ -2,10 +2,19 @@
 pipeline {
     agent any
     tools {
-        jdk 'JDK'
+        jdk 'JDK17'
         maven 'Maven-3.9'
     }
+    options {
+        disableConcurrentBuilds() // avoid conflicts
+    }
     stages {
+        stages {
+        stage('Cleanup') {
+            steps {
+                cleanWs()
+            }
+        }
         stage('Checkout from shared lib') {
             steps {
                 gitCheckout(
