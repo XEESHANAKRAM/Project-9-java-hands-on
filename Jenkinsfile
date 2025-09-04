@@ -9,7 +9,6 @@ pipeline {
         disableConcurrentBuilds() // avoid conflicts
     }
     stages {
-        stages {
         stage('Cleanup') {
             steps {
                 cleanWs()
