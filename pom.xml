@@ -59,24 +59,29 @@
     </dependencies>
 
     <build>
-    <plugins>
-        <!-- Spring Boot plugin -->
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
         <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-        </plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.11.0</version>
+    <configuration>
+        <release>17</release>
+        <compilerArgs>
+            <!-- Open up the JDK internals needed for annotation processing -->
+            <arg>--add-opens</arg>
+            <arg>jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+            <arg>--add-opens</arg>
+            <arg>jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+        </compilerArgs>
+    </configuration>
+</plugin>
 
-        <!-- Compiler plugin (compatible with JDK 17) -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.11.0</version>
-            <configuration>
-                <release>17</release>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+    </build>
 
 
 </project>
