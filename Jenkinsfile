@@ -1,7 +1,10 @@
 @Library('my-shared-library') _
 pipeline {
     agent any
-
+    tools {
+        jdk 'JDK'
+        maven 'Maven-3.9'
+    }
     stages {
         stage('Checkout from shared lib') {
             steps {
@@ -15,13 +18,6 @@ pipeline {
         stage('Build & Test') {
             steps {
                 mvnTest()
-            }
-        }
-
-        stage('Package') {
-            steps {
-                sh 'mvn clean package -DskipTests'
-                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
     }
